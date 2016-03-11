@@ -1,0 +1,16 @@
+﻿<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <img src="/assets/img/icon.png" alt="logo"/>
+            </a>
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="menuItem in vm.menuItems" ng-class="{active: vm.isMenuActive(menuItem.url)}">
+                    <a href="#{{menuItem.url}}">{{menuItem.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

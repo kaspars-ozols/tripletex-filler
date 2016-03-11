@@ -1,0 +1,43 @@
+﻿
+<div>
+
+    <button ng-click="vm.importAll()">Import</button>
+
+    {{vm.startDate | date:'yyyy-MM-dd'}} - {{vm.endDate | date:'yyyy-MM-dd'}}
+
+    <h2>Github events</h2>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Date</th>
+            <th>Project</th>
+            <th>Issue number</th>
+            <th>Issue summary</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+
+        <tbody ng-repeat="eventDate in vm.processedEvents">
+
+            <tr ng-repeat="event in eventDate.events">
+                <td>{{eventDate.key | date:'yyyy-MM-dd'}}</td>
+                <td>{{event.project}}</td>
+                <td>{{event.issueNumber}}</td>
+                <td>{{event.issueSummary}}</td>
+                <td>
+                    <pre ng-bind-html="event.message"></pre>
+                </td>
+                <td>{{vm.getProject(event)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{vm.processedEvents | json}}
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{repo.name}}</div>
+
+        <table class="table"></table>
+    </div>
+</div>

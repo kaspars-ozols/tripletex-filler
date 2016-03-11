@@ -1,0 +1,17 @@
+﻿"use strict";
+
+angular.module("tf", [
+        "ngRoute",
+        "tf.services.config",
+        "tf.services.github",
+        "tf.services.jira",
+        "tf.services.tripletex",
+        "tf.components.import",
+        "tf.components.options"
+    ]).
+    config([
+        "$routeProvider", "$compileProvider", function($routeProvider, $compileProvider) {
+            $routeProvider.otherwise({ redirectTo: "/" });
+            $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+        }
+    ]);
