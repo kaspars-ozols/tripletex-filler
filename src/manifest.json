@@ -8,10 +8,12 @@
     "persistent": false
   },
 
-   "browser_action": {
+  "browser_action": {
     "default_icon": "/assets/img/icon.png",
     "default_title": "Tripletex Filler"
   },
+
+  "options_page": "/index.html#/options",
 
   "permissions": [
     "activeTab"
