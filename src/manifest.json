@@ -16,6 +16,7 @@
   "options_page": "/app/index.html#/options",
 
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ]
 }

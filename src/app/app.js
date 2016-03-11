@@ -2,6 +2,8 @@
 
 angular.module("tf", [
         "ngRoute",
+        "ui.bootstrap",
+        "angular-linq",
         "tf.services.config",
         "tf.services.github",
         "tf.services.jira",

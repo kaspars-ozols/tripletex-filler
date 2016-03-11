@@ -1,7 +1,16 @@
 ﻿
 <div>
 
-    <button ng-click="vm.importAll()">Import</button>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="vm.startDate" ng-required="true" close-text="Close" is-open="vm.isOpen" ng-change="vm.importAll()"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="vm.isOpen = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+        </div>
+    </div>
 
     {{vm.startDate | date:'yyyy-MM-dd'}} - {{vm.endDate | date:'yyyy-MM-dd'}}
 

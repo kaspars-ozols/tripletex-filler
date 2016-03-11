@@ -1,6 +1,6 @@
 ﻿angular.module("tf.services.github", [])
     .factory("github", [
-        "$http", "$q", "config", function ($http, $q, config) {
+        "$http", "$q", "$linq", "config", function ($http, $q, $linq, config) {
 
             return {
                 getRepos: getRepos,
@@ -25,7 +25,7 @@
                         var url = "https://api.github.com/users/" + config.username + "/events?per_page=300";
                         return callApi(url, config)
                             .then(function (response) {
-                                return Enumerable.From(response)
+                                return $linq.Enumerable().From(response)
                                     .Where(function (x) { return x.type === "PushEvent" })
                                     .SelectMany(
                                         function (x) {

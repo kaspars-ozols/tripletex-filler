@@ -10,13 +10,29 @@
 </head>
 <body>
 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Tripletex Filler</a>
+            </div>
+        </div>
+    </nav>
+
+
+
     <div class="container">
         <div ng-view></div>
+
+        <footer>
+            <p>&copy; 2016 Kaspars Ozols</p>
+        </footer>
     </div>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/angular-linq/angular-linq.min.js"></script>
 
     <script src="services/config/config.js"></script>
     <script src="services/github/github.js"></script>

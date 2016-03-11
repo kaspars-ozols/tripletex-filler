@@ -10,7 +10,7 @@ angular.module("tf.components.options", ["ngRoute"])
             });
         }
     ])
-    .controller("configureCtrl", [
+    .controller("optionsCtrl", [
         "config",
         function (config) {
 
