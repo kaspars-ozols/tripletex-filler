@@ -4,7 +4,7 @@ angular.module('tf.components.import', ['ngRoute'])
     .config([
         '$routeProvider', function ($routeProvider) {
             $routeProvider.when('/', {
-                templateUrl: 'app/components/import/import.html',
+                templateUrl: 'components/import/import.html',
                 controller: 'importCtrl',
                 controllerAs: 'vm'
             });

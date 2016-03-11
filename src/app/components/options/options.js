@@ -4,7 +4,7 @@ angular.module("tf.components.options", ["ngRoute"])
     .config([
         "$routeProvider", function($routeProvider) {
             $routeProvider.when("/options", {
-                templateUrl: "app/components/options/options.html",
+                templateUrl: "components/options/options.html",
                 controller: "optionsCtrl",
                 controllerAs: "vm"
             });

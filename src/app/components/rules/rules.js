@@ -4,7 +4,7 @@ angular.module("tf.components.rules", ["ngRoute"])
     .config([
         "$routeProvider", function ($routeProvider) {
             $routeProvider.when("/rules", {
-                templateUrl: "app/components/rules/rules.html",
+                templateUrl: "components/rules/rules.html",
                 controller: "rulesCtrl",
                 controllerAs: "vm"
             });
