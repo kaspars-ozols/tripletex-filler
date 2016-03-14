@@ -11,13 +11,13 @@ angular.module("tf.components.import", ["ngRoute"])
         }
     ])
     .controller("importCtrl", [
-        "$window", "$q", "$linq", "github", "jira", "tripletex",
-        function($window, $q, $linq, github, jira, tripletex) {
+        "$q", "$linq", "github", "jira", "tripletex",
+        function($q, $linq, github, jira, tripletex) {
 
             var vm = this;
 
-            vm.startDate = Date.now() + -3 * 24 * 3600 * 1000; //5 days ago in milliseconds
-            vm.endDate = Date.now();
+            vm.selectedDate = moment().toDate();
+
             vm.processedEvents = [];
 
             vm.importAll = importAll;
@@ -29,10 +29,10 @@ angular.module("tf.components.import", ["ngRoute"])
             }
 
             function importAll() {
-
+                vm.processedEvents = [];
                 var sources = [
-                    //jira.getEvents(vm.startDate, vm.endDate) //,
-                    github.getEvents(vm.startDate, vm.endDate)
+                    jira.getActivity(vm.selectedDate),
+                    github.getActivity(vm.selectedDate)
                 ];
 
                 $q.all(sources).then(function(results) {
@@ -41,7 +41,7 @@ angular.module("tf.components.import", ["ngRoute"])
                         .SelectMany(function(x) { return x; })
                         .ToArray();
 
-                    vm.processedEvents = processEvents(allEvents);
+                    vm.processedEvents = allEvents;
                 });
             }
 

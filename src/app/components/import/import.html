@@ -1,20 +1,21 @@
 ﻿
-<div>
+
+<div class="import">
+
+    <h2>Activity Overview</h2>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <label for="selectedDate">Start date</label>
             <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="vm.startDate" ng-required="true" close-text="Close" is-open="vm.isOpen" ng-change="vm.importAll()"/>
+                <input id="selectedDate" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="vm.selectedDate" ng-required="true" close-text="Close" is-open="vm.isOpen" ng-change="vm.importAll()"/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="vm.isOpen = true"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </p>
         </div>
     </div>
-
-    {{vm.startDate | date:'yyyy-MM-dd'}} - {{vm.endDate | date:'yyyy-MM-dd'}}
-
-    <h2>Github events</h2>
+    <hr/>
 
     <table class="table table-hover">
         <tr>

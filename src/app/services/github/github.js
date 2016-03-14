@@ -1,10 +1,10 @@
 ﻿angular.module("tf.services.github", [])
     .factory("github", [
-        "$http", "$q", "$linq", "config", function ($http, $q, $linq, config) {
+        "$http", "$q", "$linq", "$moment", "config", function ($http, $q, $linq, $moment, config) {
 
             return {
                 getRepos: getRepos,
-                getEvents: getEvents
+                getActivity: getActivity
             };
 
             function getRepos() {
@@ -18,7 +18,7 @@
                     });
             }
 
-            function getEvents(startDate, endDate) {
+            function getActivity(date) {
                 return config.loadGitHubConfig()
                     .then(function (config) {
 
@@ -32,13 +32,13 @@
                                             return x.payload.commits;
                                         }, function (x, y) {
                                             return {
-                                                date: Date.parse(x.created_at),
+                                                date: $moment(x.created_at),
                                                 issue: getIssueNumberFromMessage(y.message),
                                                 project: x.repo.name,
                                                 message: y.message
                                             };
                                         })
-                                    .Where(function (x) { return x.date >= startDate && x.date <= endDate })
+                                    .Where(function (x) { return $moment(x.date).isSame(date, "day") })
                                     .ToArray();;
                             });
                     });

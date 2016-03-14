@@ -1,8 +1,8 @@
 ﻿angular.module("tf.services.jira", [])
     .factory("jira", [
-        "$http", "$q", "$sce", "config", function ($http, $q, $sce, config) {
+        "$http", "$q", "$sce", "$linq", "$moment", "config", "x2js", function ($http, $q, $sce, $linq, $moment, config, x2js) {
             return {
-                getEvents: getEvents
+                getActivity: getActivity
             };
 
             function getProjects(config) {
@@ -15,17 +15,17 @@
                 return callApi(url, config, true);
             }
 
-            function getEvents(startDate, endDate) {
+            function getActivity(date) {
                 return config.loadJiraConfig()
                     .then(function (config) {
                         var tasks = [
                             getProjects(config),
-                            getActivityStream(config, startDate, endDate)
+                            getActivityStream(config, $moment(date).startOf("day"), $moment(date).endOf("day"))
                         ];
                         return $q.all(tasks)
                             .then(function (taskResults) {
-                                var projects = Enumerable.From(taskResults[0]);
-                                var activities = Enumerable.From(taskResults[1].feed.entry);
+                                var projects = $linq.Enumerable().From(taskResults[0]);
+                                var activities = $linq.Enumerable().From(taskResults[1].feed.entry);
 
                                 var issueEvents = activities
                                     .Select(function (x) {
@@ -37,7 +37,7 @@
                                                 .Where(function (p) { return (x.object.title || x.target.title).__text.startsWith(p.key + "-"); })
                                                 .Select(function (p) { return p.name; })
                                                 .FirstOrDefault("-", function (p) { return p; }),
-                                            message: $sce.trustAsHtml(x.title.__text)
+                                            message: (x.title.__text)
                                         };
                                     })
                                     .ToArray();
@@ -78,7 +78,6 @@
                     }
                 }).then(function successCallback(response) {
                     if (isXml) {
-                        var x2js = new X2JS();
                         return x2js.xml_str2json(response.data);
                     }
                     return response.data;

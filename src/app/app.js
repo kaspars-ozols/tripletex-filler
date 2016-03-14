@@ -4,6 +4,8 @@ angular.module("tf", [
         "ngRoute",
         "ui.bootstrap",
         "angular-linq",
+        "angular-momentjs",
+        "cb.x2js",
         "tf.services.config",
         "tf.services.github",
         "tf.services.jira",

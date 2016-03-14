@@ -9,30 +9,29 @@
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Tripletex Filler</a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-
-
-    <div class="container">
-        <div ng-view></div>
-
-        <footer>
-            <p>&copy; 2016 Kaspars Ozols</p>
-        </footer>
+    <div class="container-fluid main-content" ng-view>
     </div>
 
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <footer>
+        <p>&copy; 2016 Kaspars Ozols</p>
+    </footer>
+
+    <script src="../bower_components/moment/min/moment.min.js"></script>
+    <script src="../bower_components/abdmob/x2js/xml2json.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="../bower_components/angular-linq/angular-linq.min.js"></script>
+    <script src="../bower_components/angular-momentjs/angular-momentjs.min.js"></script>
+    <script src="../bower_components/angular-x2js/dist/x2js.min.js"></script>
 
     <script src="services/config/config.js"></script>
     <script src="services/github/github.js"></script>
